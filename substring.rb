@@ -20,7 +20,7 @@ def substrings(words, dictionary)
         end
       elsif word.length < d_word.length 
         for i in 0..(word.length - d_word.length) do
-          if d_word[i..(i + d_word.length - 1)] == word
+          if word[i..(i + d_word.length - 1)] == d_word
             word_count = update_tracker(word, word_count)
           end
         end
