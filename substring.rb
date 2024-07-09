@@ -11,17 +11,17 @@ def substrings(words, dictionary)
   end
 
   
-  words.split(" ").each do | word |
+  words.downcase.split(" ").each do | word |
     dictionary.each do | d_word |
       #Strict comparison if word lengths are equal. 
       if d_word.length == word.length
         if d_word == word
           word_count = update_tracker(word, word_count)
         end
-      elsif word.length < d_word.length 
+      elsif word.length > d_word.length 
         for i in 0..(word.length - d_word.length) do
           if word[i..(i + d_word.length - 1)] == d_word
-            word_count = update_tracker(word, word_count)
+            word_count = update_tracker(d_word, word_count)
           end
         end
       end
@@ -32,8 +32,9 @@ end
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
+p substrings("Howdy partner, sit down! How's it going?", dictionary)
 
-p substrings("below", dictionary)
+
 
 
 
